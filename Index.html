@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mon accès web</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      font-family: Arial, sans-serif;
+      color: #171717;
+      background: linear-gradient(135deg, #fff8c5, #f2e8ff);
+    }
+
+    main {
+      width: min(100%, 560px);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: clamp(2rem, 8vw, 3.5rem);
+    }
+
+    p {
+      color: #555;
+    }
+
+    form {
+      display: flex;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    input {
+      flex: 1;
+      min-width: 0;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      font-size: 16px;
+    }
+
+    button, .shortcut {
+      padding: 15px 20px;
+      border: 0;
+      border-radius: 12px;
+      background: #111;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .shortcut {
+      display: inline-block;
+      margin-top: 18px;
+      background: #ffeb00;
+      color: #111;
+      font-weight: bold;
+    }
+
+    .note {
+      margin-top: 24px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>Où veux-tu aller ?</h1>
+    <p>Recherche Snapchat ou ouvre un autre site dans un nouvel onglet.</p>
+
+    <form id="search-form">
+      <input
+        id="search"
+        type="text"
+        placeholder="Ex. Snapchat"
+        aria-label="Nom du site"
+        required
+      >
+      <button type="submit">Ouvrir</button>
+    </form>
+
+    <a
+      class="shortcut"
+      href="https://web.snapchat.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Ouvrir Snapchat
+    </a>
+
+    <p class="note">
+      Pour ta sécurité, connecte-toi uniquement sur le site officiel de Snapchat.
+    </p>
+  </main>
+
+  <script>
+    const form = document.getElementById("search-form");
+    const input = document.getElementById("search");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const query = input.value.trim().toLowerCase();
+
+      if (query.includes("snap")) {
+        window.open(
+          "https://web.snapchat.com/",
+          "_blank",
+          "noopener,noreferrer"
+        );
+        return;
+      }
+
+      alert("Pour le moment, cette page propose seulement un raccourci vers Snapchat.");
+    });
+  </script>
+</body>
+</html>
